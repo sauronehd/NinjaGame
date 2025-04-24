@@ -20,6 +20,7 @@ public abstract class PlayerBaseState
 public class PlayerStateMachine : MonoBehaviour
 {
     private bool wasGroundedLastFrame = true;
+    public Transform PlayerTransform ;  // Reference to the player's transform
 
     // --- Coyote time (grounded grace period) ---
     private float jumpGroundedGraceTimer = 0f;
@@ -130,6 +131,8 @@ public class PlayerStateMachine : MonoBehaviour
         stateRegistry[nameof(ShootState)] = ShootState; // Register ShootState
         FallState = new FallState(this); // Initialize FallState
         stateRegistry[nameof(FallState)] = FallState; // Register FallState
+        AttackState = new AttackState(this); // Initialize AttackState
+        stateRegistry[nameof(AttackState)] = AttackState; // Register AttackState
 
         // Initialize jumps
         JumpsRemaining = MaxJumps;
@@ -158,6 +161,16 @@ public class PlayerStateMachine : MonoBehaviour
         wasGroundedLastFrame = isGroundedNow;
 
         currentState?.Tick(Time.deltaTime);
+
+        Vector2 movementInput = GetMovementInput();
+        if (movementInput.x != 0)
+        {
+            PlayerTransform.localScale = new Vector3(Mathf.Sign(movementInput.x), 1, 1); // Flip player based on input direction
+        }
+
+        print(InputReader.IsKnifePressed());
+
+
     }
 
     public void SwitchState(PlayerBaseState newState)

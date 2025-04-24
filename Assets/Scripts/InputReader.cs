@@ -48,4 +48,15 @@ public class InputReader
         return Input.GetButtonDown("Fire1");
         // If you want continuous fire while held, use GetButton("Fire1")
     }
+
+    public bool IsKnifePressed()
+    {
+
+        // Use GetButtonDown for single fire per press
+        // Assumes a "Fire2" button is defined (default is Right Ctrl/Mouse 1)
+        return Input.GetKeyDown(KeyCode.Alpha8);
+
+        // If you want continuous fire while held, use GetButton("Fire2")
+
+    }
 }
