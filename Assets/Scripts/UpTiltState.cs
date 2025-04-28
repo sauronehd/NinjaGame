@@ -11,6 +11,7 @@ private float enterTime;
         enterTime = Time.time;
         Debug.Log($"[UpTiltState] Entering UpTiltState State at {enterTime:F2}s");
         stateMachine.upTiltObject.SetActive(true);
+        stateMachine.jabObject.SetActive(false);
     }
 
     public override void Tick(float deltaTime)
