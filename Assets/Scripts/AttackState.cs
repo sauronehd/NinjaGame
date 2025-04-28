@@ -10,6 +10,11 @@ private float enterTime;
     {
         enterTime = Time.time;
         Debug.Log($"[AttackState] Entering Attack State at {enterTime:F2}s");
+        if(stateMachine.InputReader.IsUpPressed())
+        {
+            //print("UpTilt");
+            stateMachine.SwitchState(stateMachine.UpTiltState);
+        }
     }
 
     public override void Tick(float deltaTime)
@@ -28,5 +33,6 @@ private float enterTime;
     public override void Exit()
     {
         Debug.Log($"[AttackState] Exiting Attack State after {Time.time - enterTime:F2}s");
+        
     }
 }

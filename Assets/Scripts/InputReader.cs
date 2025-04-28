@@ -59,4 +59,10 @@ public class InputReader
         // If you want continuous fire while held, use GetButton("Fire2")
 
     }
+    public bool IsUpPressed()
+    {
+
+        return Input.GetKey(KeyCode.W);
+        
+    }
 }

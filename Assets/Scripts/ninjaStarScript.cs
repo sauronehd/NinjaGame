@@ -7,12 +7,12 @@ public class ninjaStarScript : MonoBehaviour
     
     void Start()
     {
-            originCoords = transform.position;
+        originCoords = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(originCoords.x, originCoords.y+(-2*Time.deltaTime), originCoords.z);
+        transform.position = new Vector3(originCoords.x, transform.position.y+(-5*Time.deltaTime), originCoords.z);
     }
 }
