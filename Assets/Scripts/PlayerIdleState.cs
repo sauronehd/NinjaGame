@@ -54,6 +54,13 @@ public class PlayerIdleState : PlayerBaseState
             return;
         }
 
+        //Check For Jab
+        if(stateMachine.InputReader.IsAttackPressed())
+        {
+            stateMachine.SwitchState(stateMachine.AttackState);
+            return;
+        }
+
 
         // Check for movement input to transition to Walk/Run
         Vector2 moveInput = stateMachine.InputReader.GetMovementInput(); // Use InputReader property

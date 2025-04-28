@@ -49,7 +49,7 @@ public class InputReader
         // If you want continuous fire while held, use GetButton("Fire1")
     }
 
-    public bool IsKnifePressed()
+    public bool IsAttackPressed()
     {
 
         // Use GetButtonDown for single fire per press

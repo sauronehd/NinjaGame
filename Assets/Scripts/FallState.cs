@@ -58,6 +58,13 @@ public class FallState : PlayerBaseState
             stateMachine.SwitchState(stateMachine.ShootState);
             return;
         }
+
+        if (stateMachine.InputReader.IsAttackPressed())
+        {
+            stateMachine.SwitchState(stateMachine.AerialAttackState);
+            return;
+        }
+
     }
 
     public override void Exit()

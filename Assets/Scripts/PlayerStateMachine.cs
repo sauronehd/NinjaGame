@@ -19,7 +19,7 @@ public abstract class PlayerBaseState
 // The main state machine component
 public class PlayerStateMachine : MonoBehaviour
 {
-    private bool wasGroundedLastFrame = true;
+    public bool wasGroundedLastFrame = true;
     public Transform PlayerTransform ;  // Reference to the player's transform
 
     // --- Coyote time (grounded grace period) ---
@@ -61,8 +61,10 @@ public class PlayerStateMachine : MonoBehaviour
     public CrouchState CrouchState { get; private set; }
     public SlideState SlideState { get; private set; }
     public WallClingState WallClingState { get; private set; }
+    public AttackState AttackState { get; private set; } // Add AttackState property back
     public ShootState ShootState { get; private set; } // Add ShootState declaration
     public FallState FallState { get; private set; } // Add FallState declaration
+    public AerialAttackState AerialAttackState { get; private set; } // Add AerialAttackState declaration
 
     // Component References (Example)
     public Rigidbody2D RB { get; private set; }
@@ -75,6 +77,8 @@ public class PlayerStateMachine : MonoBehaviour
 
     // State duration tracking
     private float stateEnterTime;
+    public GameObject jabObject;
+    public GameObject aerialAttackObject;
     public float GetStateDuration()
     {
         return Time.time - stateEnterTime;
@@ -133,6 +137,8 @@ public class PlayerStateMachine : MonoBehaviour
         stateRegistry[nameof(FallState)] = FallState; // Register FallState
         AttackState = new AttackState(this); // Initialize AttackState
         stateRegistry[nameof(AttackState)] = AttackState; // Register AttackState
+        AerialAttackState = new AerialAttackState(this); // Initialize AerialAttackState
+        stateRegistry[nameof(AerialAttackState)] = AerialAttackState; // Register AerialAttackState
 
         // Initialize jumps
         JumpsRemaining = MaxJumps;
@@ -143,6 +149,8 @@ public class PlayerStateMachine : MonoBehaviour
         // Set the initial state
         SwitchState(IdleState); // Start in Idle state
         JumpsRemaining = MaxJumps;
+        jabObject.SetActive(false); // Ensure jab object is inactive at start
+        aerialAttackObject.SetActive(false); // Ensure aerial attack object is inactive at start
     }
 
     private void Update()
@@ -168,7 +176,7 @@ public class PlayerStateMachine : MonoBehaviour
             PlayerTransform.localScale = new Vector3(Mathf.Sign(movementInput.x), 1, 1); // Flip player based on input direction
         }
 
-        print(InputReader.IsKnifePressed());
+        
 
 
     }

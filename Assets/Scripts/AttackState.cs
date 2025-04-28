@@ -16,14 +16,12 @@ private float enterTime;
     {
         if((Time.time-enterTime)>0.3)
         {
-            playerStateMachine.SwitchState(playerStateMachine.IdleState);
-            //play idle animation
-            //set knife to inactive
+            stateMachine.SwitchState(stateMachine.IdleState);
+            stateMachine.jabObject.SetActive(false);
         }
         else
         {
-            //rotate the knife to show attack
-            //also set knife to active
+            stateMachine.jabObject.SetActive(true);
         }
     }
 
