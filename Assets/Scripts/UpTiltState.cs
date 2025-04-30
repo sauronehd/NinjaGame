@@ -25,10 +25,7 @@ private float enterTime;
         {
 
         }
-        else
-        {
-            stateMachine.jabObject.SetActive(true);
-        }        
+
 
     }
 

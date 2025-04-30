@@ -74,6 +74,12 @@ public class WalkState : PlayerBaseState
             return;
         }
 
+        if(stateMachine.InputReader.IsAttackPressed())
+        {
+            stateMachine.SwitchState(stateMachine.SideTiltState);
+            return;
+        }
+
         // Apply walk movement (only affect horizontal velocity)
         float targetVelocityX = moveInput.x * stateMachine.MoveSpeed * walkSpeedMultiplier;
         stateMachine.RB.linearVelocity = new Vector2(targetVelocityX, stateMachine.RB.linearVelocity.y); // Preserve Y velocity

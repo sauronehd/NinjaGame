@@ -6,6 +6,8 @@ private float enterTime;
 
     public AttackState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
+    private bool resolves = false;
+
     public override void Enter()
     {
         enterTime = Time.time;
@@ -14,6 +16,11 @@ private float enterTime;
         {
             //print("UpTilt");
             stateMachine.SwitchState(stateMachine.UpTiltState);
+            return;
+        }
+        else
+        {
+            resolves = true;
         }
     }
 
@@ -24,7 +31,7 @@ private float enterTime;
             stateMachine.SwitchState(stateMachine.IdleState);
             stateMachine.jabObject.SetActive(false);
         }
-        else
+        else if(resolves)
         {
             stateMachine.jabObject.SetActive(true);
         }

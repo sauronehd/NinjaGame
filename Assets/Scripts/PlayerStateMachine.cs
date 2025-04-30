@@ -66,7 +66,7 @@ public class PlayerStateMachine : MonoBehaviour
     public FallState FallState { get; private set; } // Add FallState declaration
     public AerialAttackState AerialAttackState { get; private set; } // Add AerialAttackState declaration
     public UpTiltState UpTiltState { get; private set; } // Add UpTiltState declaration
-
+    public SideTiltState SideTiltState { get; private set; } // Add SideTiltState declaration
     // Component References (Example)
     public Rigidbody2D RB { get; private set; }
     public Animator Animator { get; private set; }
@@ -81,6 +81,7 @@ public class PlayerStateMachine : MonoBehaviour
     public GameObject jabObject;
     public GameObject aerialAttackObject;
     public GameObject upTiltObject;
+    public GameObject sideTiltObject; 
     public float GetStateDuration()
     {
         return Time.time - stateEnterTime;
@@ -143,6 +144,9 @@ public class PlayerStateMachine : MonoBehaviour
         stateRegistry[nameof(AerialAttackState)] = AerialAttackState; // Register AerialAttackState
         UpTiltState = new UpTiltState(this); // Initialize UpTiltState
         stateRegistry[nameof(UpTiltState)] = UpTiltState; // Register UpTiltState
+        SideTiltState = new SideTiltState(this); // Initialize SideTiltState
+        stateRegistry[nameof(SideTiltState)] = SideTiltState; // Register SideTiltState
+
 
         // Initialize jumps
         JumpsRemaining = MaxJumps;
@@ -155,7 +159,8 @@ public class PlayerStateMachine : MonoBehaviour
         JumpsRemaining = MaxJumps;
         jabObject.SetActive(false); // Ensure jab object is inactive at start
         aerialAttackObject.SetActive(false); // Ensure aerial attack object is inactive at start
-        upTiltObject.SetActive(false); // Ensure up tilt object is inactive at start
+        upTiltObject.SetActive(false); // Ensure up tilt object is inactive at 
+        sideTiltObject.SetActive(false); // Ensure side tilt object is inactive at start
     }
 
     private void Update()
@@ -178,7 +183,10 @@ public class PlayerStateMachine : MonoBehaviour
         Vector2 movementInput = GetMovementInput();
         if (movementInput.x != 0)
         {
-            PlayerTransform.localScale = new Vector3(Mathf.Sign(movementInput.x), 1, 1); // Flip player based on input direction
+            if(currentState == WalkState || currentState == RunState)
+            {
+                PlayerTransform.localScale = new Vector3(Mathf.Sign(movementInput.x), 1, 1); // Flip player based on input direction
+            }
         }
 
         
