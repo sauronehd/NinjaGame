@@ -122,8 +122,8 @@ GameObject:
   - component: {fileID: 8447977035555912616}
   - component: {fileID: 1779346489392483852}
   - component: {fileID: 1914377576693117475}
-  m_Layer: 0
-  m_Name: Player Ninja
+  m_Layer: 7
+  m_Name: Player1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -256,6 +256,7 @@ GameObject:
   - component: {fileID: 2171726274910469925}
   - component: {fileID: 6453385386278683337}
   - component: {fileID: 4022215737679166794}
+  - component: {fileID: 2398674260480292784}
   m_Layer: 0
   m_Name: sideTilt
   m_TagString: Untagged
@@ -363,7 +364,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -395,6 +396,19 @@ PolygonCollider2D:
       - {x: 0.65, y: -0.03}
       - {x: 0.68, y: 0.04}
   m_UseDelaunayMesh: 0
+--- !u!114 &2398674260480292784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4303814905656661754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6ac18ebe30d84fda9e8b7598bcc248a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagetName: Player2(Clone)
 --- !u!1 &6219610775862428644
 GameObject:
   m_ObjectHideFlags: 0
