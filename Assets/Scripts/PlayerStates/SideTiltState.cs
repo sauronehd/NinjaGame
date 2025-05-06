@@ -11,6 +11,8 @@ private float enterTime;
         enterTime = Time.time;
         Debug.Log($"[SideTiltState] Entering SideTiltState State at {enterTime:F2}s");
         stateMachine.sideTiltObject.SetActive(true);
+        stateMachine.sideTiltObject.GetComponent<meleeAttackScript>().consumed = false;
+        Physics.SyncTransforms();
     }
 
     public override void Tick(float deltaTime)

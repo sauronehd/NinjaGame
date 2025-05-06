@@ -409,6 +409,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tagetName: Player2(Clone)
+  playerTransform: {fileID: 476504}
+  consumed: 0
+  forceMagnitudeBase: 0
+  damage: 10
+  stunTime: 0
 --- !u!1 &6219610775862428644
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,6 +425,7 @@ GameObject:
   - component: {fileID: 3598377357679194097}
   - component: {fileID: 2360339558303294854}
   - component: {fileID: 4935326088347842197}
+  - component: {fileID: 2156492353017826333}
   m_Layer: 0
   m_Name: jab
   m_TagString: Untagged
@@ -585,6 +591,24 @@ PolygonCollider2D:
       - {x: 0.515, y: 0.275}
       - {x: 0.525, y: 0.275}
   m_UseDelaunayMesh: 0
+--- !u!114 &2156492353017826333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6219610775862428644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6ac18ebe30d84fda9e8b7598bcc248a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagetName: Player2(Clone)
+  playerTransform: {fileID: 476504}
+  consumed: 0
+  forceMagnitudeBase: 0
+  damage: 2
+  stunTime: 0
 --- !u!1 &6734205709435017409
 GameObject:
   m_ObjectHideFlags: 0
@@ -627,6 +651,7 @@ GameObject:
   - component: {fileID: 2372158198275513427}
   - component: {fileID: 8702582898458624208}
   - component: {fileID: 1549819116400047218}
+  - component: {fileID: 4605393186259159688}
   m_Layer: 0
   m_Name: upTilt
   m_TagString: Untagged
@@ -784,3 +809,21 @@ PolygonCollider2D:
       - {x: 0.73499995, y: -0.53}
       - {x: 0.73499995, y: -0.39}
   m_UseDelaunayMesh: 0
+--- !u!114 &4605393186259159688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7516438585300358571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6ac18ebe30d84fda9e8b7598bcc248a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagetName: Player2(Clone)
+  playerTransform: {fileID: 476504}
+  consumed: 0
+  forceMagnitudeBase: 0
+  damage: 7
+  stunTime: 0

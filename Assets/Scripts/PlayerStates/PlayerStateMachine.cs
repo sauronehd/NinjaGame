@@ -67,6 +67,7 @@ public class PlayerStateMachine : MonoBehaviour
     public AerialAttackState AerialAttackState { get; private set; } // Add AerialAttackState declaration
     public UpTiltState UpTiltState { get; private set; } // Add UpTiltState declaration
     public SideTiltState SideTiltState { get; private set; } // Add SideTiltState declaration
+    public stunLockState StunLockStateInstance { get; private set; } // Rename to avoid conflict with type name
     // Component References (Example)
     public Rigidbody2D RB { get; private set; }
     public Animator Animator { get; private set; }
@@ -146,6 +147,8 @@ public class PlayerStateMachine : MonoBehaviour
         stateRegistry[nameof(UpTiltState)] = UpTiltState; // Register UpTiltState
         SideTiltState = new SideTiltState(this); // Initialize SideTiltState
         stateRegistry[nameof(SideTiltState)] = SideTiltState; // Register SideTiltState
+        StunLockStateInstance = new stunLockState(this); // Initialize StunLockState
+        stateRegistry[nameof(StunLockStateInstance)] = StunLockStateInstance; // Register StunLockState
 
 
         // Initialize jumps

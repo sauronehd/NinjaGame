@@ -34,6 +34,8 @@ private float enterTime;
         else if(resolves)
         {
             stateMachine.jabObject.SetActive(true);
+            Physics.SyncTransforms();
+            resolves = false;
         }
     }
 

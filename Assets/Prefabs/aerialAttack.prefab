@@ -178,3 +178,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd248801b907f47f6aee3e42d77da9ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  consumed: 0
+  myTransform: {fileID: 915382446097167283}
+  tagetName: Player2(Clone)

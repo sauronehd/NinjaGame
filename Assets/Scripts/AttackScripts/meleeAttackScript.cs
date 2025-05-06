@@ -1,9 +1,15 @@
 using UnityEngine;
 
-public class sideTiltScript : MonoBehaviour
+public class meleeAttackScript : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public string tagetName;
+    public Transform playerTransform;
+    public bool consumed = false;
+    public float forceMagnitudeBase;
+    public float damage;
+    public float stunTime;
+    //Stun time not in use - must add another state into player(StunLockState. Will then set a timer within that state to the stunTime value. 
     void Start()
     {
         
@@ -15,8 +21,12 @@ public class sideTiltScript : MonoBehaviour
         
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (consumed)
+        {
+            return; // Exit if already consumed
+        }
         print("triggered");
         if (collision.gameObject.name == tagetName)
         {
@@ -27,19 +37,21 @@ public class sideTiltScript : MonoBehaviour
             if (targetRigidbody != null)
             {
                 Vector2 direction = new Vector2(
-                    transform.position.x - collision.gameObject.transform.position.x,
-                    transform.position.y - collision.gameObject.transform.position.y
+                    playerTransform.position.x - collision.gameObject.transform.position.x,
+                    playerTransform.position.y - collision.gameObject.transform.position.y
                 ).normalized;
 
-                float xdirection = direction.x-1;
-                float ydirection = direction.y-1;
+                float xdirection = direction.x*-1;
+                float ydirection = direction.y*-1;
 
 
                 Vector2 forceDirection = new Vector2(xdirection, ydirection); // Adjust the direction as needed
-                float forceMagnitude = 50*(targetScript.damage+0.2f); // Adjust the force magnitude as needed
+                float forceMagnitude = forceMagnitudeBase*((targetScript.damage*0.1f)+0.8f); // Adjust the force magnitude as needed
                 targetRigidbody.AddForce(forceDirection * forceMagnitude, ForceMode2D.Impulse);
-                targetScript.damage += 10f; // Increase damage by 0.2
+                targetScript.damage += damage; // Increase damage by 0.2
                 print("added force to player 2");
+                consumed = true; // Mark as consumed
+                
             }
             else
             {
