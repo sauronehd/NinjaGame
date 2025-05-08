@@ -21,6 +21,13 @@ private float enterTime;
         else
         {
             resolves = true;
+            if(resolves)
+            {
+                stateMachine.jabObject.SetActive(true);
+                stateMachine.jabObject.GetComponent<meleeAttackScript>().consumed = false;
+                Physics.SyncTransforms();
+                resolves = false;
+            }
         }
     }
 
@@ -31,12 +38,7 @@ private float enterTime;
             stateMachine.SwitchState(stateMachine.IdleState);
             stateMachine.jabObject.SetActive(false);
         }
-        else if(resolves)
-        {
-            stateMachine.jabObject.SetActive(true);
-            Physics.SyncTransforms();
-            resolves = false;
-        }
+
     }
 
     public override void Exit()

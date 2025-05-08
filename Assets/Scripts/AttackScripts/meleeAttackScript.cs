@@ -42,11 +42,11 @@ public class meleeAttackScript : MonoBehaviour
                 ).normalized;
 
                 float xdirection = direction.x*-1;
-                float ydirection = direction.y*-1;
+                float ydirection = direction.y;
 
 
                 Vector2 forceDirection = new Vector2(xdirection, ydirection); // Adjust the direction as needed
-                float forceMagnitude = forceMagnitudeBase*((targetScript.damage*0.1f)+0.8f); // Adjust the force magnitude as needed
+                float forceMagnitude = forceMagnitudeBase*(((targetScript.damage*0.01f)+0.8f)); // Adjust the force magnitude as needed
                 targetRigidbody.AddForce(forceDirection * forceMagnitude, ForceMode2D.Impulse);
                 targetScript.damage += damage; // Increase damage by 0.2
                 print("added force to player 2");
