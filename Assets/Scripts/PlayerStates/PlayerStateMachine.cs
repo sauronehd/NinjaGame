@@ -1,5 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Alteruna;
+
+using AlterunaAvatar = Alteruna.Avatar;
+using UnityAvatar = UnityEngine.Avatar;
 
 // Base class for all player states
 public abstract class PlayerBaseState
@@ -83,6 +87,8 @@ public class PlayerStateMachine : MonoBehaviour
     public GameObject aerialAttackObject;
     public GameObject upTiltObject;
     public GameObject sideTiltObject; 
+    private AlterunaAvatar avatar;
+    Alteruna.User User = Multiplayer.Instance.Me; // Declare and initialize the User variable
     public float GetStateDuration()
     {
         return Time.time - stateEnterTime;
@@ -153,10 +159,19 @@ public class PlayerStateMachine : MonoBehaviour
 
         // Initialize jumps
         JumpsRemaining = MaxJumps;
+
+        //Avatar
+        
+
     }
 
     private void Start()
     {
+        
+        if (User != Multiplayer.Instance.Me)
+        {
+            return;
+        }
         // Set the initial state
         SwitchState(IdleState); // Start in Idle state
         JumpsRemaining = MaxJumps;
@@ -168,6 +183,10 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void Update()
     {
+        if(User!= Multiplayer.Instance.Me)
+        {
+            return;
+        }
         // Update coyote time timer
         if (jumpGroundedGraceTimer > 0f)
             jumpGroundedGraceTimer -= Time.deltaTime;
