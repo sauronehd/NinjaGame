@@ -89,7 +89,7 @@ public class PlayerStateMachine : MonoBehaviour
     public GameObject sideTiltObject; 
     private AlterunaAvatar avatar;
     public CamerWillWorkPls camera;
-    Alteruna.User User = Multiplayer.Instance.Me; // Declare and initialize the User variable
+    public Alteruna.User User = Multiplayer.Instance.Me; // Declare and initialize the User variable
     public float GetStateDuration()
     {
         return Time.time - stateEnterTime;
@@ -189,13 +189,14 @@ public class PlayerStateMachine : MonoBehaviour
             return;
         }
         camera.playerTransform = PlayerTransform; // Assign the player transform to the camera
-        
+
     }
 
     private void Update()
     {
         if(User!= Multiplayer.Instance.Me)
         {
+            print("Not the local player, skipping update.");
             return;
         }
         // Update coyote time timer

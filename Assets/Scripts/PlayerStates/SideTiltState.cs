@@ -17,12 +17,12 @@ private float enterTime;
 
     public override void Tick(float deltaTime)
     {
-        if((Time.time-enterTime)>0.3)
+        if((Time.time-enterTime)>6)
         {
             stateMachine.sideTiltObject.SetActive(false);
         }
         
-        if(Time.time-enterTime>0.6)
+        if(Time.time-enterTime>7)
         {
             stateMachine.SwitchState(stateMachine.IdleState);
             stateMachine.sideTiltObject.SetActive(false);
