@@ -16,10 +16,7 @@ public class CamerWillWorkPls : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if(playerTransform==null)
-        {
-            playerTransform = GameObject.FindGameObjectWithTag("Player").transform; 
-        }
+
 
         Vector3 diseredPosition = new Vector3(playerTransform.position.x + offset.x, playerTransform.position.y + offset.y, transform.position.z);
         Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, diseredPosition, ref velocity, smoothSpeed);

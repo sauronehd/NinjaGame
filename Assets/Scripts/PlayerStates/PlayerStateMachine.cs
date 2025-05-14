@@ -88,6 +88,7 @@ public class PlayerStateMachine : MonoBehaviour
     public GameObject upTiltObject;
     public GameObject sideTiltObject; 
     private AlterunaAvatar avatar;
+    public CamerWillWorkPls camera;
     Alteruna.User User = Multiplayer.Instance.Me; // Declare and initialize the User variable
     public float GetStateDuration()
     {
@@ -179,6 +180,16 @@ public class PlayerStateMachine : MonoBehaviour
         aerialAttackObject.SetActive(false); // Ensure aerial attack object is inactive at start
         upTiltObject.SetActive(false); // Ensure up tilt object is inactive at 
         sideTiltObject.SetActive(false); // Ensure side tilt object is inactive at start
+
+
+        camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CamerWillWorkPls>(); // Find the camera object
+        if (camera == null)
+        {
+            Debug.LogError("Camera not found! Ensure the camera has the 'MainCamera' tag and the CamerWillWorkPls script attached.", this);
+            return;
+        }
+        camera.playerTransform = PlayerTransform; // Assign the player transform to the camera
+        
     }
 
     private void Update()

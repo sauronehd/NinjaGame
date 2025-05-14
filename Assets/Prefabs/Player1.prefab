@@ -183,6 +183,7 @@ MonoBehaviour:
   aerialAttackObject: {fileID: 2495654480661521248, guid: 5c63dd7bede2049ac8592b0d9dff7131, type: 3}
   upTiltObject: {fileID: 7516438585300358571}
   sideTiltObject: {fileID: 4303814905656661754}
+  camera: {fileID: 0}
 --- !u!70 &1779346489392483852
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
