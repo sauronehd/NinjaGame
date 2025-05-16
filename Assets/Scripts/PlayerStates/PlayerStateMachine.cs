@@ -163,7 +163,7 @@ public class PlayerStateMachine : MonoBehaviour
         // Initialize jumps
         JumpsRemaining = MaxJumps;
 
-        
+        //Avatar
         
 
     }
