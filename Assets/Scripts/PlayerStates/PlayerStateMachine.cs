@@ -23,6 +23,8 @@ public abstract class PlayerBaseState
 // The main state machine component
 public class PlayerStateMachine : MonoBehaviour
 {
+
+    [SerializeField] private Alteruna.Synchronizable synchronizable;
     public bool wasGroundedLastFrame = true;
     public Transform PlayerTransform ;  // Reference to the player's transform
 
@@ -194,11 +196,11 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void Update()
     {
-        if(User!= Multiplayer.Instance.Me)
-        {
-            print("Not the local player, skipping update.");
+        if (avatar.User != Multiplayer.Instance.Me)
             return;
-        }
+
+
+        
         // Update coyote time timer
         if (jumpGroundedGraceTimer > 0f)
             jumpGroundedGraceTimer -= Time.deltaTime;
